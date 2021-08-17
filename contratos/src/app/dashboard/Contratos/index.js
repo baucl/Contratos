@@ -1,9 +1,8 @@
 import React from "react";
+import { SearchNavHeader } from "../../../components/SearchNavHeader";
 
-const Contratos = () =>{
-    return(
-        <div>Desde Contratos</div>
-    )
+const Contratos = () => {
+  return <SearchNavHeader />;
 };
 
 export default Contratos;

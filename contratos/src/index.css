@@ -1,13 +1,89 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.tabs-extra-demo-button {
+  margin-right: 16px;
+}
+
+.ant-row-rtl .tabs-extra-demo-button {
+  margin-right: 0;
+  margin-left: 16px;
+}
+
+.iconRight {
+  margin-left: 5px;
+}
+
+.iconLeft {
+  margin-right: 5px;
+}
+
+.column {
+  margin: 0 15px 0 15px;
+}
+
+h4 {
+  font-size: 18px;
+  color: #333333;
+  font-weight: 400;
+}
+
+.company-name {
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 20px;
+}
+
+.form-input {
+  border: 1px solid #ccc;
+}
+
+.ant-tabs-nav .ant-tabs-tab {
+  /* For tabs border */
+  border-color: 1px solid black;
+}
+
+.ant-tabs-nav::before {
+  /* For the line to the right and close to the tabs */
+  border-color: 1px solid black;
+}
+
+.ant-tabs > .ant-tabs-nav {
+  /* So that there is no gap between the content and tabs */
+  margin-bottom: 0;
+}
+
+.ant-tabs-content-holder {
+  /* padding: 15px; */
+  /* border: 1px solid black; */ /* Border for the content part */
+  /* border-top: transparent; */ /* Remove the top border so that there is no overlap*/
+}
+
+.modal {
+  width: auto;
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .modal {
+    width: 600px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .modal {
+    width: 900px;
+  }
 }
