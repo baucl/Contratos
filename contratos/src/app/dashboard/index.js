@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 const IndexPage = ({ children }) => {
   const { Header, Content, Footer } = Layout;
   return (
-    <Layout>
-      <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
+    <Layout style={{ background: "none" }}>
+      <Header style={{ position: "fixed", zIndex: 1, width: "100%", backgroundColor: "#1f365c" }}>
         <div className="logo-unilink" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]} style={{backgroundColor: "#1f365c"}}>
           <Menu.Item key="1">
             <Link style={{ textDecoration: "none" }} to="/">
               Dashboard
@@ -30,6 +30,13 @@ const IndexPage = ({ children }) => {
         className="site-layout"
         style={{ padding: "0 50px", marginTop: 64 }}
       >
+        <div
+          style={{
+            backgroundColor: "#80808026",
+            height: "20vh",
+            width: "100%",
+          }}
+        />
         {children}
       </Content>
       <Footer
@@ -38,7 +45,7 @@ const IndexPage = ({ children }) => {
           position: "absolute",
           bottom: 0,
           width: "100%",
-          height: 60,
+          height: 30,
         }}
       >{`©${new Date().getFullYear()} - Unilink`}</Footer>
     </Layout>
