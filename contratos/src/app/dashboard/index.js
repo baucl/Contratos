@@ -1,11 +1,48 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import { NavDropdown } from "react-bootstrap";
 
+import { TabsLayout } from "../../components/TabsLayout";
+
 import UnilinkLogo from "../../images/logo-unilink.png";
 
+import Button from "react-bootstrap/Button";
+import { Input } from "react-bootstrap";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUpload, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { NewContractModalForm } from "../../components/NewContractModalForm";
+
+const massiveUploadIcon = (
+  <span className="iconRight fa-layers fa-fw">
+    <FontAwesomeIcon icon={faUpload} />
+  </span>
+);
+
+const newContractIcon = (
+  <span className="iconRight fa-layers fa-fw">
+    <FontAwesomeIcon icon={faPlus} />
+  </span>
+);
+
 const IndexPage = ({ children }) => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const inputRef = useRef(null);
+  const [uploadedFileName, setUploadedFileName] = useState(null);
+
+  const handleUpload = () => {
+    inputRef.current?.click();
+  };
+  const handleDisplayFileDetails = () => {
+    inputRef.current?.files &&
+      setUploadedFileName(inputRef.current.files[0].name);
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-unilink header-nav">
@@ -54,7 +91,55 @@ const IndexPage = ({ children }) => {
           </div>
         </div>
       </nav>
-      <div>{children}</div>
+      <h3 className="company-name">
+        Empresa Industrial de recursos naturales – Resumen de actividad de
+        contratos
+      </h3>
+      <div style={{ display: "flex" }}>
+        {children}
+        {/* <Button
+          style={{ color: "white", marginLeft: "auto" }}
+          className="Botones"
+          type="submit"
+          variant="warning">
+          Carga Masiva contratos {massiveUploadIcon}
+        </Button> */}
+        <div style={{ marginLeft: "auto" }}>
+          <input
+            onChange={handleDisplayFileDetails}
+            ref={inputRef}
+            className="d-none"
+            type="file"
+          />
+          <button
+            onClick={handleUpload}
+            className="btn btn-warning"
+            style={{ color: "white" }}>
+            {uploadedFileName ? (
+              uploadedFileName
+            ) : (
+              <>Carga Masiva contratos {massiveUploadIcon}</>
+            )}
+          </button>
+        </div>
+        {/* <input
+          style={{ color: "white", marginLeft: "auto" }}
+          className="btn btn-warning"
+          type="file"
+          // variant="warning"
+        >
+          Carga Masiva contratos {massiveUploadIcon}
+        </input> */}
+        <Button
+          style={{ color: "white" }}
+          type="submit"
+          variant="primary"
+          onClick={handleShow}>
+          {newContractIcon} Crear nuevo contrato
+        </Button>
+        <NewContractModalForm show={show} handleClose={handleClose} />
+      </div>
+      <TabsLayout />
     </>
   );
 };

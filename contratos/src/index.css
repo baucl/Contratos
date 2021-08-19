@@ -17,8 +17,7 @@ code {
 }
 
 .header-nav {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  margin-bottom: 10px;
 }
 
 .header-nav-item-containers {
@@ -38,4 +37,9 @@ code {
 
 .profile-logout {
   margin-left: auto;
+}
+
+.company-name {
+  margin-left: 15px;
+  font-weight: 400;
 }
