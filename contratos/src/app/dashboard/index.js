@@ -13,6 +13,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { NewContractModalForm } from "../../components/NewContractModalForm";
 
+import { useTranslation } from "react-i18next";
+
 const massiveUploadIcon = (
   <span className="iconRight fa-layers fa-fw">
     <FontAwesomeIcon icon={faUpload} />
@@ -26,6 +28,20 @@ const newContractIcon = (
 );
 
 const IndexPage = ({ children }) => {
+  const { i18n, t } = useTranslation();
+
+  const [language, setLanguage] = useState("Language");
+
+  const handleLangSelect = eventKey => {
+    if (eventKey === "es") {
+      setLanguage(t("navbar-spanish-lang"));
+      i18n.changeLanguage(eventKey);
+    } else {
+      setLanguage(t("navbar-english-lang"));
+      i18n.changeLanguage("en");
+    }
+  };
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -54,28 +70,45 @@ const IndexPage = ({ children }) => {
             data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+            aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mb-2 mb-lg-0 header-nav-item-containers">
               <li className="nav-item">
                 <Link className="header-nav-item" to="/">
-                  Dashboard
+                  {t("navbar-link-1")}
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="header-nav-item" to="/contratos">
-                  Contratos
+                  {t("navbar-link-2")}
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="header-nav-item" to="/contratistas">
-                  Contratistas
+                  {t("navbar-link-3")}
                 </Link>
               </li>
               <li className="justify-content-end profile-logout">
+                <NavDropdown
+                  title={language}
+                  id="navbarScrollingDropdown"
+                  activeKey="en"
+                  onSelect={handleLangSelect}>
+                  <NavDropdown.Item eventKey="en">
+                    {t("navbar-english-lang")}
+                  </NavDropdown.Item>
+                  <NavDropdown.Item eventKey="es">
+                    {t("navbar-spanish-lang")}
+                  </NavDropdown.Item>
+                  {/* <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action5">
+                    Something else here
+                  </NavDropdown.Item> */}
+                </NavDropdown>
+              </li>
+              <li className="justify-content-end">
                 <NavDropdown title="Albert Folch" id="navbarScrollingDropdown">
                   <NavDropdown.Item href="#action3">
                     Change Password
@@ -109,8 +142,7 @@ const IndexPage = ({ children }) => {
                 <Button
                   onClick={handleUpload}
                   variant="warning"
-                  className="text-white col-xs-12 col-sm-4 col-md-2 col-lg-2"
-                >
+                  className="text-white col-xs-12 col-sm-4 col-md-2 col-lg-2">
                   {uploadedFileName ? (
                     uploadedFileName
                   ) : (
@@ -121,8 +153,7 @@ const IndexPage = ({ children }) => {
                   className="col-12 col-xs-12 col-sm-4 col-md-2 col-lg-2"
                   type="submit"
                   variant="primary"
-                  onClick={handleShow}
-                >
+                  onClick={handleShow}>
                   {newContractIcon} Crear nuevo contrato
                 </Button>
               </div>
