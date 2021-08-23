@@ -6,7 +6,6 @@ import { NavDropdown } from "react-bootstrap";
 import { TabsLayout } from "../../components/TabsLayout";
 
 import UnilinkLogo from "../../images/logo-unilink.png";
-
 import Button from "react-bootstrap/Button";
 import { Input } from "react-bootstrap";
 
@@ -55,7 +54,8 @@ const IndexPage = ({ children }) => {
             data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
-            aria-label="Toggle navigation">
+            aria-label="Toggle navigation"
+          >
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -91,55 +91,58 @@ const IndexPage = ({ children }) => {
           </div>
         </div>
       </nav>
-      <h3 className="company-name">
-        Empresa Industrial de recursos naturales – Resumen de actividad de
-        contratos
-      </h3>
-      <div style={{ display: "flex" }}>
-        {children}
-        {/* <Button
-          style={{ color: "white", marginLeft: "auto" }}
-          className="Botones"
-          type="submit"
-          variant="warning">
-          Carga Masiva contratos {massiveUploadIcon}
-        </Button> */}
+      <div>
         <div style={{ marginLeft: "auto" }}>
-          <input
-            onChange={handleDisplayFileDetails}
-            ref={inputRef}
-            className="d-none"
-            type="file"
-          />
-          <button
-            onClick={handleUpload}
-            className="btn btn-warning"
-            style={{ color: "white" }}>
-            {uploadedFileName ? (
-              uploadedFileName
-            ) : (
-              <>Carga Masiva contratos {massiveUploadIcon}</>
-            )}
-          </button>
+          <h3 className="company-name">
+            Empresa Industrial de recursos naturales – Resumen de actividad de
+            contratos
+          </h3>
+          <div className="col-12">
+            <input
+              onChange={handleDisplayFileDetails}
+              ref={inputRef}
+              className="d-none"
+              type="file"
+            />
+            <div className="py-2">
+              <div className="d-flex justify-content-end">
+                <Button
+                  onClick={handleUpload}
+                  variant="warning"
+                  className="text-white col-xs-12 col-sm-4 col-md-2 col-lg-2"
+                >
+                  {uploadedFileName ? (
+                    uploadedFileName
+                  ) : (
+                    <>Carga Masiva contratos {massiveUploadIcon}</>
+                  )}
+                </Button>
+                <Button
+                  className="col-12 col-xs-12 col-sm-4 col-md-2 col-lg-2"
+                  type="submit"
+                  variant="primary"
+                  onClick={handleShow}
+                >
+                  {newContractIcon} Crear nuevo contrato
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
-        {/* <input
-          style={{ color: "white", marginLeft: "auto" }}
-          className="btn btn-warning"
-          type="file"
-          // variant="warning"
-        >
-          Carga Masiva contratos {massiveUploadIcon}
-        </input> */}
-        <Button
-          style={{ color: "white" }}
-          type="submit"
-          variant="primary"
-          onClick={handleShow}>
-          {newContractIcon} Crear nuevo contrato
-        </Button>
-        <NewContractModalForm show={show} handleClose={handleClose} />
       </div>
-      <TabsLayout />
+
+      <div style={{ display: "flex" }}>
+        <div className="col-12">
+          <TabsLayout />
+          <div>{children}</div>
+          <div className="footer">
+            <div className="text-center">
+              <i className="fab fa-facebook-f"></i>Unilink
+            </div>
+          </div>
+          <NewContractModalForm show={show} handleClose={handleClose} />
+        </div>
+      </div>
     </>
   );
 };

@@ -1,10 +1,11 @@
 import React from "react";
-
+import ContratosTable from "../../../components/dashboard/Table/ContratosTable";
 import { Link } from "react-router-dom";
 
 const Contratos = () => {
   return (
-    <div>
+    <ContratosTable/>
+   /* <div>
       <Link
         style={{
           textDecoration: "none",
@@ -24,7 +25,7 @@ const Contratos = () => {
         }}>
         / Resultado de búsqueda: Compañía
       </div>
-    </div>
+    </div>*/
   );
 };
 

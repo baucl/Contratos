@@ -6,7 +6,6 @@ import "primeflex/primeflex.css";
 import React, { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import Container from "react-bootstrap/Container";
 import { Button } from "primereact/button";
 import { useHistory } from "react-router-dom";
 
@@ -16,7 +15,7 @@ const DataTableResponsiveDemo = () => {
 
   useEffect(() => {
     setProducts(data);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   const codeBodyTemplate = (rowData) => {
     return (
@@ -89,7 +88,7 @@ const DataTableResponsiveDemo = () => {
           className="p-button-rounded p-button-info p-button-outlined p-mr-2"
           tooltip="KPI Financiero"
           tooltipOptions={{ position: "top" }}
-          onClick={() => null}
+          onClick={() => history.push("/kpi-financieros")}
         />
         <Button
           icon="pi pi-check"
@@ -103,7 +102,7 @@ const DataTableResponsiveDemo = () => {
   };
 
   return (
-    <Container>
+    <div className="px-5">
       <div className="datatable-responsive-demo">
         <div className="card">
           <DataTable
@@ -134,7 +133,7 @@ const DataTableResponsiveDemo = () => {
           </DataTable>
         </div>
       </div>
-    </Container>
+    </div>
   );
 };
 
