@@ -13,3 +13,6 @@ import "core-js/es/map";
 import "core-js/es/weak-map";
 import "core-js/es/set";
 import "core-js/features/array/includes";
+import "core-js/features/promise";
+//import "framer-motion";
+import "core-js/es/weak-map";
