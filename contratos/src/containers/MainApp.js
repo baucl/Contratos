@@ -1,7 +1,6 @@
 import React from "react";
-import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import AppLayout from "./AppLayout";
-
 
 const RestrictedRoute = ({
   component: Component,
@@ -11,7 +10,7 @@ const RestrictedRoute = ({
 }) => (
   <Route
     {...rest}
-    render={(props) =>
+    render={props =>
       authUser && expiresJWT ? (
         <Component {...props} />
       ) : (

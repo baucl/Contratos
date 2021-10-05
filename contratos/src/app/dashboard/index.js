@@ -90,7 +90,7 @@ const IndexPage = ({ children }) => {
                   {t("navbar-link-3")}
                 </Link>
               </li>
-              <li className="justify-content-end profile-logout">
+              <li style={{ marginLeft: "auto" }} className="profile-logout">
                 <NavDropdown
                   title={language}
                   id="navbarScrollingDropdown"
@@ -108,7 +108,7 @@ const IndexPage = ({ children }) => {
                   </NavDropdown.Item> */}
                 </NavDropdown>
               </li>
-              <li className="justify-content-end">
+              <li>
                 <NavDropdown title="Albert Folch" id="navbarScrollingDropdown">
                   <NavDropdown.Item href="#action3">
                     Change Password
@@ -125,12 +125,38 @@ const IndexPage = ({ children }) => {
         </div>
       </nav>
       <div>
-        <div style={{ marginLeft: "auto" }}>
-          <h3 className="company-name">
+        <div
+          style={{
+            marginLeft: "auto",
+            display: "flex",
+            justifyContent: "space-between",
+          }}>
+          <h4 className="company-name">
             Empresa Industrial de recursos naturales – Resumen de actividad de
             contratos
-          </h3>
-          <div className="col-12">
+          </h4>
+          <div style={{ marginTop: "45px" }}>
+            <Button
+              style={{ width: "216px", lineHeight: 1 }}
+              onClick={handleUpload}
+              variant="warning"
+              className="text-white col-xs-12 col-sm-4 col-md-2 col-lg-2">
+              {uploadedFileName ? (
+                uploadedFileName
+              ) : (
+                <>Carga Masiva contratos {massiveUploadIcon}</>
+              )}
+            </Button>
+            <Button
+              style={{ width: "200px", lineHeight: 1 }}
+              className="col-12 col-xs-12 col-sm-4 col-md-2 col-lg-2"
+              type="submit"
+              variant="primary"
+              onClick={handleShow}>
+              {newContractIcon} Crear nuevo contrato
+            </Button>
+          </div>
+          {/* <div className="col-12">
             <input
               onChange={handleDisplayFileDetails}
               ref={inputRef}
@@ -158,7 +184,7 @@ const IndexPage = ({ children }) => {
                 </Button>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
